@@ -1,0 +1,31 @@
+# Environment files
+.env
+
+# WordPress core files (if they get generated)
+/wordpress/
+wp-admin/
+wp-includes/
+*.log
+
+# Database
+*.sql
+*.sqlite
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Uploads (optional - uncomment if you don't want to track uploads)
+# wp-content/uploads/
+
+# Cache and temp files
+wp-content/cache/
+wp-content/temp/
+wp-content/backup*/
