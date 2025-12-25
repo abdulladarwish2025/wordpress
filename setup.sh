@@ -5,6 +5,9 @@
 
 set -e
 
+# Trap Ctrl+C and handle it gracefully
+trap 'echo -e "\n\nSetup cancelled by user."; exit 0' SIGINT SIGTERM
+
 echo "=================================================="
 echo "  Smart Accountant WordPress Theme Setup"
 echo "=================================================="
@@ -43,13 +46,6 @@ echo ""
 # Ask if user wants to start the containers
 read -p "Do you want to start the WordPress containers now? (y/n) " -n 1 -r
 echo ""
-
-# Check if read was interrupted (Ctrl+C)
-if [ $? -ne 0 ]; then
-    echo ""
-    echo "Setup cancelled by user."
-    exit 0
-fi
 
 if [[ $REPLY =~ ^[Yy]$ ]]; then
     echo ""

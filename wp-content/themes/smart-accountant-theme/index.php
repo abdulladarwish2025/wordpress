@@ -96,10 +96,10 @@
 <article class="flex flex-col bg-surface-light dark:bg-surface-dark rounded-xl shadow-sm hover:shadow-md border border-gray-100 dark:border-gray-800 transition-all group h-full">
 <div class="relative h-48 w-full overflow-hidden rounded-t-xl bg-gray-200">
 <?php if ( has_post_thumbnail() ) : ?>
-<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" data-alt="<?php the_title_attribute(); ?>" style='background-image: url("<?php echo esc_url( get_the_post_thumbnail_url() ); ?>");'></div>
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("<?php echo esc_url( get_the_post_thumbnail_url() ); ?>");' role="img" aria-label="<?php echo esc_attr( get_the_title() ); ?>"></div>
 <?php else : ?>
-<div class="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center">
-<span class="material-symbols-outlined text-gray-500 text-6xl">article</span>
+<div class="absolute inset-0 bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center" role="img" aria-label="<?php esc_attr_e( 'No featured image', 'smart-accountant' ); ?>">
+<span class="material-symbols-outlined text-gray-500 text-6xl" aria-hidden="true">article</span>
 </div>
 <?php endif; ?>
 <span class="absolute top-3 right-3 bg-white/90 dark:bg-black/80 backdrop-blur text-text-main dark:text-white text-xs font-bold px-2 py-1 rounded">

@@ -130,12 +130,18 @@ if command -v docker &> /dev/null; then
     if docker compose version &> /dev/null || command -v docker-compose &> /dev/null; then
         echo -e "${GREEN}✓${NC} Docker Compose is available"
         
-        # Validate docker-compose.yml syntax
-        if docker compose config > /dev/null 2>&1; then
-            echo -e "${GREEN}✓${NC} docker-compose.yml syntax is valid"
-        else
-            echo -e "${RED}✗${NC} docker-compose.yml has syntax errors"
+        # Check if docker-compose.yml exists
+        if [ ! -f "docker-compose.yml" ]; then
+            echo -e "${RED}✗${NC} docker-compose.yml file not found"
             ERRORS=$((ERRORS + 1))
+        else
+            # Validate docker-compose.yml syntax
+            if docker compose config > /dev/null 2>&1; then
+                echo -e "${GREEN}✓${NC} docker-compose.yml syntax is valid"
+            else
+                echo -e "${RED}✗${NC} docker-compose.yml has syntax errors"
+                ERRORS=$((ERRORS + 1))
+            fi
         fi
     else
         echo -e "${YELLOW}⚠${NC} Docker Compose not found (not required for all deployment methods)"

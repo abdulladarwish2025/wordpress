@@ -64,6 +64,15 @@ function smart_accountant_menu_link_class( $atts, $item, $args ) {
 }
 add_filter( 'nav_menu_link_attributes', 'smart_accountant_menu_link_class', 1, 3 );
 
+/**
+ * Register widget areas (sidebars)
+ * 
+ * Registers the primary sidebar widget area that appears on blog pages.
+ * Widgets added to this area will appear in the right sidebar on desktop
+ * and below the main content on mobile devices.
+ * 
+ * @since Smart Accountant Theme 1.0
+ */
 function smart_accountant_widgets_init() {
     register_sidebar( array(
         'name'          => __( 'Primary Sidebar', 'smart-accountant' ),
