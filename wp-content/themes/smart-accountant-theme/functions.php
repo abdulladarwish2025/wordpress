@@ -16,20 +16,17 @@ function smart_accountant_scripts() {
             theme: {
                 extend: {
                     colors: {
-                        \"primary\": \"#1855e2\",
-                        \"primary-dark\": \"#103cb0\",
-                        \"background-light\": \"#f8fafc\",
-                        \"background-dark\": \"#0f172a\",
+                        \"primary\": \"#1854e2\",
+                        \"background-light\": \"#f6f6f8\",
+                        \"background-dark\": \"#111621\",
                         \"surface-light\": \"#ffffff\",
-                        \"surface-dark\": \"#1e293b\",
-                        \"text-main\": \"#0f172a\",
-                        \"text-muted\": \"#64748b\",
+                        \"surface-dark\": \"#1a2233\",
                     },
                     fontFamily: {
-                        \"display\": ['\"Noto Sans Arabic\"', \"Manrope\", \"sans-serif\"],
-                        \"sans\": ['\"Noto Sans Arabic\"', \"Manrope\", \"sans-serif\"],
+                        \"display\": [\"Noto Sans Arabic\", \"Manrope\", \"sans-serif\"],
+                        \"body\": [\"Noto Sans Arabic\", \"Manrope\", \"sans-serif\"],
                     },
-                    borderRadius: { \"DEFAULT\": \"0.25rem\", \"lg\": \"0.5rem\", \"xl\": \"0.75rem\", \"full\": \"9999px\" },
+                    borderRadius: {\"DEFAULT\": \"0.5rem\", \"lg\": \"0.75rem\", \"xl\": \"1rem\", \"full\": \"9999px\"},
                 },
             },
         }
@@ -51,18 +48,20 @@ add_theme_support( 'title-tag' );
 function smart_accountant_register_nav_menu() {
     register_nav_menus( array(
         'primary_menu' => __( 'Primary Menu', 'smart-accountant' ),
+        'footer_quick_links' => __( 'Footer Quick Links', 'smart-accountant' ),
+        'footer_support_links' => __( 'Footer Support Links', 'smart-accountant' ),
     ) );
 }
 add_action( 'after_setup_theme', 'smart_accountant_register_nav_menu' );
 
 // Add custom classes to nav menu items
-function smart_accountant_menu_link_class( $atts, $item, $args ) {
-  if (property_exists($args, 'add_li_class')) {
-    $atts['class'] = $args->add_li_class;
-  }
-  return $atts;
+function smart_accountant_menu_item_class( $classes, $item, $args ) {
+    if ( property_exists( $args, 'add_li_class' ) ) {
+        $classes[] = $args->add_li_class;
+    }
+    return $classes;
 }
-add_filter( 'nav_menu_link_attributes', 'smart_accountant_menu_link_class', 1, 3 );
+add_filter( 'nav_menu_css_class', 'smart_accountant_menu_item_class', 10, 3 );
 
 function smart_accountant_widgets_init() {
     register_sidebar( array(
