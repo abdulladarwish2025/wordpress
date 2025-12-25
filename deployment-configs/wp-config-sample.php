@@ -29,9 +29,11 @@ define( 'DB_COLLATE', '' );
 /**#@+
  * Authentication Unique Keys and Salts.
  *
- * Change these to different unique phrases!
- * You can generate these using the {@link https://api.wordpress.org/secret-key/1.1/salt/ WordPress.org secret-key service}
- * You can change these at any point in time to invalidate all existing cookies. This will force all users to have to log in again.
+ * IMPORTANT: Generate unique keys for your installation!
+ * Visit: https://api.wordpress.org/secret-key/1.1/salt/
+ * 
+ * Copy the generated keys and replace the placeholders below.
+ * You can change these at any point to invalidate all existing cookies.
  *
  * @since 2.6.0
  */
